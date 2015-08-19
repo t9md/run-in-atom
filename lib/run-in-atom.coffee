@@ -32,7 +32,8 @@ module.exports =
         else if warning
           console.warn "Run in Atom Warning:", warning
         else
-          console.log "Run in Atom:", result
+          null
+          # console.log "Run in Atom:", result
 
   deactivate: ->
     @disposable?.dispose()
