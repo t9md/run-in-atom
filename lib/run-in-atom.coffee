@@ -1,10 +1,12 @@
 coffee = require 'coffee-script'
 vm = require 'vm'
 
-  
 module.exports =
   config:
     openDeveloperToolsOnRun:
+      type: 'boolean'
+      default: true
+    clearConsole:
       type: 'boolean'
       default: true
 
@@ -12,6 +14,8 @@ module.exports =
     @disposable = atom.commands.add 'atom-text-editor', 'run-in-atom:run-in-atom', =>
       if atom.config.get 'run-in-atom.openDeveloperToolsOnRun'
         atom.openDevTools()
+      if atom.config.get 'run-in-atom.clearConsole'
+        console.clear()
       editor = atom.workspace.getActiveTextEditor()
       if !editor
         console.warn "Run in Atom Warning: No text editor is active."
