@@ -20,12 +20,12 @@ module.exports =
       if !editor
         console.warn "Run in Atom Warning: No text editor is active."
         return
-      code = editor.getSelectedText()
-      if code
-        scope = @matchingCursorScopeInEditor(editor)
-      else
-        code = editor.getText()
-        scope = @scopeInEditor(editor)
+      # code = editor.getSelectedText()
+      # if code
+      #   scope = @matchingCursorScopeInEditor(editor)
+      # else
+      code = editor.getText()
+      scope = @scopeInEditor(editor)
       @runCodeInScope code, scope, (error, warning, result) ->
         if error
           console.error "Run in Atom Error:", error
