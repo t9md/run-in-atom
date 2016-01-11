@@ -17,13 +17,9 @@ module.exports =
       if atom.config.get 'run-in-atom.clearConsole'
         console.clear()
       editor = atom.workspace.getActiveTextEditor()
-      if !editor
+      unless editor
         console.warn "Run in Atom Warning: No text editor is active."
         return
-      # code = editor.getSelectedText()
-      # if code
-      #   scope = @matchingCursorScopeInEditor(editor)
-      # else
       code = editor.getText()
       scope = @scopeInEditor(editor)
       @runCodeInScope code, scope, (error, warning, result) ->
